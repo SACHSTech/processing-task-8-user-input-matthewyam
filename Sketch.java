@@ -4,6 +4,7 @@ import processing.core.PImage;
 public class Sketch extends PApplet {
 	
   PImage nana;
+  PImage bNana;
 	
   /**
    * Called once at the beginning of execution, put your size all in this method
@@ -18,19 +19,35 @@ public class Sketch extends PApplet {
    * values here i.e background, stroke, fill etc.
    */
   public void setup() {
-    background(210, 255, 173);
+    background(0, 0, 0);
     nana = loadImage("nana.png");
+    bNana = loadImage("bNana.png");
+    
   }
 
   /**
    * Called repeatedly, anything drawn to the screen goes here
    */
-  public void draw() {
+  
+  
+   public void draw() {
 	  
-	// sample code, delete this stuff
   if (mousePressed) {
     image(nana,mouseX,mouseY);
   }
+  
+  if(keyPressed){
+  textSize(50);
+  text(key, mouseX,mouseY);
+  }
+
+  }
+
+  
+  public void mouseWheel() {
+    
+    image(bNana, mouseX, mouseY);
+
   }
   
   // define other methods down here.
