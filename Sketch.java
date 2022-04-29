@@ -5,6 +5,7 @@ public class Sketch extends PApplet {
 	
   PImage nana;
   PImage bNana;
+  PImage rick;
 	
   /**
    * Called once at the beginning of execution, put your size all in this method
@@ -22,12 +23,12 @@ public class Sketch extends PApplet {
     background(0, 0, 0);
     nana = loadImage("nana.png");
     bNana = loadImage("bNana.png");
+    rick = loadImage("rick.png");
     
   }
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
+  float rickX = width/2;
+  float rickY = height/2;
   
   
    public void draw() {
@@ -47,6 +48,22 @@ public class Sketch extends PApplet {
   public void mouseWheel() {
     
     image(bNana, mouseX, mouseY);
+
+  }
+
+  public void keyPressed(){
+    if (keyCode == UP) {
+      rickY--;
+    } 
+    else if (keyCode == DOWN) {
+      rickY++;
+    } 
+    else if(keyCode == LEFT){
+      rickX--;
+    }
+    else if(keyCode == RIGHT){
+     rickX++; 
+    }
 
   }
   
