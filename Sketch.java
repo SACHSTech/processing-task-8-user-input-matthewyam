@@ -6,6 +6,10 @@ public class Sketch extends PApplet {
   PImage nana;
   PImage bNana;
   PImage rick;
+  boolean rickUp = false;
+  boolean rickDown = false;
+  boolean rickLeft = false;
+  boolean rickRight = false;
 	
   /**
    * Called once at the beginning of execution, put your size all in this method
@@ -15,9 +19,10 @@ public class Sketch extends PApplet {
     size(400, 400);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
+  /**
+   * @param nana loads banana image
+   * @param bNana loads bigger banana
+   * @param rick loads rick's face
    */
   public void setup() {
     background(0, 0, 0);
@@ -26,13 +31,17 @@ public class Sketch extends PApplet {
     rick = loadImage("rick.png");
     
   }
-
+/**
+ * @param rickX X value for rick's face
+ * @param rickY Y value for rick's face
+ */
   float rickX = width/2;
-  float rickY = height/2;
+  float rickY = height/2; 
   
   
    public void draw() {
 	  
+  
   if (mousePressed) {
     image(nana,mouseX,mouseY);
   }
@@ -41,6 +50,23 @@ public class Sketch extends PApplet {
   textSize(50);
   text(key, mouseX,mouseY);
   }
+  
+  image(rick, rickX, rickY);
+  
+  if(rickUp){
+    rickY--;
+  }
+  if(rickDown){
+    rickY++;
+  }
+  if(rickLeft){
+    rickX--;
+  }
+  if(rickRight){
+    rickX++;
+  }
+
+
 
   }
 
@@ -53,16 +79,31 @@ public class Sketch extends PApplet {
 
   public void keyPressed(){
     if (keyCode == UP) {
-      rickY--;
+      rickUp = true;
     } 
     else if (keyCode == DOWN) {
-      rickY++;
+      rickDown = true;
     } 
     else if(keyCode == LEFT){
-      rickX--;
+      rickLeft = true;
     }
     else if(keyCode == RIGHT){
-     rickX++; 
+      rickRight = true; 
+    }
+
+  }
+  public void keyReleased(){
+    if (keyCode == UP) {
+      rickUp = false;
+    } 
+    else if (keyCode == DOWN) {
+      rickDown = false;
+    } 
+    else if(keyCode == LEFT){
+      rickLeft = false;
+    }
+    else if(keyCode == RIGHT){
+      rickRight = false; 
     }
 
   }
